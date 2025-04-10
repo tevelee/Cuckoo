@@ -14,18 +14,9 @@ struct FileHeaderHandler {
 
     static func imports(
         for file: FileRepresentation,
-        imports: [String],
-        publicImports: [String],
-        testableImports: [String]
+        imports: [String]
     ) -> String {
-        [
-            !publicImports.contains("Cuckoo") ? ["import Cuckoo"] : [],
-            OrderedSet(file.imports.map { $0.description } + imports).values
-                .filter { !testableImports.contains($0) }
-                .map { "import \($0)" },
-            publicImports.map { "public import \($0)" },
-            testableImports.map { "@testable import \($0)" },
-        ]
+        imports
         .flatMap { $0 }
         .joined(separator: "\n")
     }

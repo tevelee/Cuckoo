@@ -1,8 +1,7 @@
 # output = "Tests/Swift/Generated/GeneratedMocks.swift"
 
 [modules.Cuckoo]
-imports = ["Foundation"]
-testableImports = ["Cuckoo"]
+imports = ["import Foundation", "@testable import Cuckoo"]
 sources = [
     "Tests/Swift/Source/*.swift",
 ]
